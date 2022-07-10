@@ -573,7 +573,6 @@ MonoBehaviour:
   _placeForUi: {fileID: 1903552}
   _analyticsManager: {fileID: 1924577151}
   _adsService: {fileID: 1076014840}
-  _IAPService: {fileID: 1631438424}
 --- !u!1 &1995827575
 GameObject:
   m_ObjectHideFlags: 0

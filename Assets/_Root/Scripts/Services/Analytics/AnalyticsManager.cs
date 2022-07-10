@@ -5,15 +5,28 @@ namespace Services.Analytics
 {
     internal class AnalyticsManager : MonoBehaviour
     {
+        private static AnalyticsManager _instance;
+        internal static AnalyticsManager Instance { get => Instance = _instance; private set => _instance = value; }
+        
         private IAnalyticsService[] _services;
-
 
         private void Awake()
         {
+            InitializeAnalyticsManager();
             _services = new IAnalyticsService[]
             {
                 new UnityAnalyticsService()
             };
+        }
+
+        private void InitializeAnalyticsManager()
+        {
+            if (_instance == null)
+            {
+                _instance = this;
+                return;
+            }
+            Destroy(gameObject);
         }
 
         public void SendMainMenuOpened() =>

@@ -6,6 +6,9 @@ namespace Services.Ads.UnityAds
 {
     internal class UnityAdsService : MonoBehaviour, IUnityAdsInitializationListener, IAdsService
     {
+        private static UnityAdsService _instance;
+        internal static UnityAdsService Instance { get => Instance = _instance; private set => _instance = value; }
+
         [Header("Components")]
         [SerializeField] private UnityAdsSettings _settings;
 
@@ -20,8 +23,19 @@ namespace Services.Ads.UnityAds
 
         private void Awake()
         {
+            InitializeUnityAdsService();
             InitializeAds();
             InitializePlayers();
+        }
+
+        private void InitializeUnityAdsService()
+        {
+            if (_instance == null)
+            {
+                _instance = this;
+                return;
+            }
+            Destroy(gameObject);
         }
 
         private void InitializeAds() =>
@@ -37,7 +51,6 @@ namespace Services.Ads.UnityAds
             RewardedPlayer = CreateRewarded();
             BannerPlayer = CreateBanner();
         }
-
 
         private IAdsPlayer CreateInterstitial() =>
             _settings.Interstitial.Enabled

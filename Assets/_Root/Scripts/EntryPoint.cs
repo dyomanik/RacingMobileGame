@@ -10,9 +10,6 @@ internal class EntryPoint : MonoBehaviour
     private const GameState InitialState = GameState.Start;
 
     [SerializeField] private Transform _placeForUi;
-    [SerializeField] private AnalyticsManager _analyticsManager;
-    [SerializeField] private UnityAdsService _adsService;
-    [SerializeField] private IAPService _IAPService;
 
     private MainController _mainController;
 
@@ -21,8 +18,8 @@ internal class EntryPoint : MonoBehaviour
     private void Start()
     {
         var profilePlayer = new ProfilePlayer(SpeedCar, InitialState);
-        _mainController = new MainController(_placeForUi, profilePlayer,_analyticsManager, _adsService, _IAPService);
-        _analyticsManager.SendMainMenuOpened();
+        _mainController = new MainController(_placeForUi, profilePlayer);
+        AnalyticsManager.Instance.SendMainMenuOpened();
     }
 
     private void OnDestroy()

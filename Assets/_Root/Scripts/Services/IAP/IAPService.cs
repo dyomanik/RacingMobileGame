@@ -6,6 +6,9 @@ namespace Services.IAP
 {
     internal class IAPService : MonoBehaviour, IStoreListener, IIAPService
     {
+        private static IAPService _instance;
+        internal static IAPService Instance {get => Instance = _instance; private set => _instance = value; }
+
         [Header("Components")]
         [SerializeField] private ProductLibrary _productLibrary;
 
@@ -20,9 +23,21 @@ namespace Services.IAP
         private PurchaseRestorer _purchaseRestorer;
         private IStoreController _controller;
 
-
-        private void Awake() =>
+        private void Awake()
+        {
             InitializeProducts();
+            InitializeIAPServise();
+        }
+
+        private void InitializeIAPServise()
+        {
+            if (_instance == null)
+            {
+                _instance = this;
+                return;
+            }
+            Destroy(gameObject);
+        }
 
         private void InitializeProducts()
         {
@@ -77,7 +92,10 @@ namespace Services.IAP
         public void Buy(string id)
         {
             if (IsInitialized)
+            {
                 _controller.InitiatePurchase(id);
+                UnityEngine.Analytics.Analytics.Transaction(id, 1, "USD");
+            }
             else
                 Error($"Buy {id} FAIL. Not initialized.");
         }
