@@ -18,7 +18,6 @@ internal abstract class BaseRepository<TKey, TValue, TConfig> : IRepository
     public void Dispose() =>
         _items.Clear();
 
-
     private Dictionary<TKey, TValue> CreteItems(IEnumerable<TConfig> configs)
     {
         var items = new Dictionary<TKey, TValue>();
