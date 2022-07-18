@@ -1,9 +1,6 @@
-using Tool;
 using System;
-using UnityEngine;
 using JetBrains.Annotations;
 using Features.Inventory.Items;
-using Object = UnityEngine.Object;
 
 namespace Features.Inventory
 {

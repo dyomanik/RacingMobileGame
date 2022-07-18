@@ -3,7 +3,6 @@ using UnityEngine;
 using Features.Inventory;
 using Features.Inventory.Items;
 using Object = UnityEngine.Object;
-using Features.AbilitySystem;
 
 namespace Features.Shed
 {

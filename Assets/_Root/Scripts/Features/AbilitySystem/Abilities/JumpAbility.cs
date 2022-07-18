@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using JetBrains.Annotations;
-using Object = UnityEngine.Object;
 
 namespace Features.AbilitySystem.Abilities
 {

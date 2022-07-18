@@ -19,9 +19,7 @@ namespace Features.AbilitySystem
 
         private readonly Dictionary<string, AbilityButtonView> _buttonViews = new Dictionary<string, AbilityButtonView>();
 
-
         private void OnDestroy() => Clear();
-
 
         public void Display(IEnumerable<IAbilityItem> abilityItems, Action<string> clicked)
         {
@@ -38,7 +36,6 @@ namespace Features.AbilitySystem
 
             _buttonViews.Clear();
         }
-
 
         private AbilityButtonView CreateButtonView(IAbilityItem item, Action<string> clicked)
         {

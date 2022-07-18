@@ -5,6 +5,7 @@ using Features.AbilitySystem;
 using Profile;
 using Tool;
 using UnityEngine;
+using Services;
 
 namespace Game
 {
@@ -30,6 +31,8 @@ namespace Game
             _carController = CreateCarController();
 
             _abilitiesContext = CreateAbilitiesContext(placeForUI,_carController);
+
+            ServiceRoster.Analytics.SendGameStarted();
         }
 
         private TapeBackgroundController CreateTapeBackground(SubscriptionProperty<float> leftMoveDiff, SubscriptionProperty<float> rightMoveDiff)

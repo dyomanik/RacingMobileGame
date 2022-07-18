@@ -1,5 +1,4 @@
-﻿using Features.AbilitySystem;
-using Features.Inventory;
+﻿using Features.Inventory;
 using Features.Shed.Upgrade;
 using Profile;
 using Tool;
@@ -15,8 +14,8 @@ namespace Features.Shed
 
         private IShedController CreateController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
-            IShedView shedView = LoadView(placeForUi);
             InventoryContext inventoryContext = CreateInventoryContext(placeForUi, profilePlayer.Inventory);
+            IShedView shedView = LoadView(placeForUi);
             IUpgradeHandlersRepository upgradeHandlersRepository = CreateRepository();
             var shedController = new ShedController(profilePlayer, shedView, inventoryContext, upgradeHandlersRepository);
             AddController(shedController);

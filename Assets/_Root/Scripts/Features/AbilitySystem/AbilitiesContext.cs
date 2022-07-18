@@ -1,5 +1,4 @@
-﻿using Features.AbilitySystem;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Tool;
 using UnityEngine;
 using Features.AbilitySystem.Abilities;
@@ -8,7 +7,6 @@ namespace Features.AbilitySystem
 {
     internal class AbilitiesContext : BaseContext
     {
-
         public AbilitiesContext(Transform placeForUi, IAbilityActivator abilityActivator) => 
             CreateController(placeForUi, abilityActivator);
 
@@ -22,6 +20,7 @@ namespace Features.AbilitySystem
 
             return abilitiesController;
         }
+
         private IAbilityItem[] LoadAbilityItemConfigs()
         {
             var dataSourcePath = new ResourcePath("Configs/Ability/AbilityItemConfigDataSource");

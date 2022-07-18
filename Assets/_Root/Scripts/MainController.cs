@@ -1,10 +1,6 @@
-using Features.AbilitySystem;
 using Features.Shed;
 using Game;
 using Profile;
-using Services.Ads.UnityAds;
-using Services.Analytics;
-using Services.IAP;
 using Ui;
 using UnityEngine;
 
@@ -37,19 +33,12 @@ internal class MainController : BaseController
                 break;
             case GameState.Game:
                 _gameController = new GameController(_placeForUi, _profilePlayer);
-                AnalyticsManager.Instance.SendGameStarted();
                 break;
             case GameState.Shed:
                 _shedContext = CreateShedContext(_placeForUi, _profilePlayer);
                 break;
             case GameState.Settings:
                 _settingsMenuController = new SettingsMenuController(_placeForUi, _profilePlayer);
-                break;
-            case GameState.RewardedAds:
-                PlayAd();
-                break;
-            case GameState.Buying:
-                Buy();
                 break;
         }
     }
@@ -69,15 +58,9 @@ internal class MainController : BaseController
         return context;
     }
 
-    private void PlayAd() => UnityAdsService.Instance.RewardedPlayer.Play();
-
-    private void Buy() => IAPService.Instance.Buy("product_1");
-
     protected override void OnDispose()
     {
         DisposeSubControllers();
         _profilePlayer.CurrentState.UnSubscribeOnChange(OnChangeGameState);
     }
-
-
 }
