@@ -19,20 +19,17 @@ namespace BattleScripts
         private int _healthPlayer;
         private int _powerPlayer;
         private int _criminalityPlayer;
-        private int? _defaultCriminalityPlayer;
         private int _crimeEdgeValue;
-
 
         public Enemy(string name)
         {
             _name = name;
         }
 
-        public Enemy(string name, int? defaultCriminalityPlayer,int crimeEdgeValue)
+        public Enemy(string name, int crimeEdgeValue)
         {
             _name = name;
             _crimeEdgeValue = crimeEdgeValue;
-            _defaultCriminalityPlayer = defaultCriminalityPlayer;
         }
 
         public void Update(PlayerData playerData)

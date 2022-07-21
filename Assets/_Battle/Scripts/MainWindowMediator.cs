@@ -48,8 +48,7 @@ namespace BattleScripts
 
         private void Start()
         {
-            int? defaultCriminalityValue = null;
-            _enemy = new Enemy("Enemy Flappy", defaultCriminalityValue, _crimeEdgeValue);
+            _enemy = new Enemy("Enemy Flappy", _crimeEdgeValue);
 
             _money = CreatePlayerData(DataType.Money);
             _heath = CreatePlayerData(DataType.Health);
