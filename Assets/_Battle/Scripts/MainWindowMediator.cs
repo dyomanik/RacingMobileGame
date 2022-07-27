@@ -14,7 +14,7 @@ namespace BattleScripts
         [SerializeField] private TMP_Text _countCriminalityText;
         [SerializeField] private int _minCriminalityValue;
         [SerializeField] private int _maxCriminalityValue;
-        [SerializeField] private int _crimeEdgeValue;
+        [SerializeField] private int _maxPeacefulCrimeValue;
         [SerializeField] private int _characteristicValueMultiplayer;
 
         [Header("Enemy Stats")]
@@ -48,12 +48,12 @@ namespace BattleScripts
 
         private void Start()
         {
-            _enemy = new Enemy("Enemy Flappy", _crimeEdgeValue);
+            _enemy = new Enemy("Enemy Flappy", _maxPeacefulCrimeValue);
 
             _money = CreatePlayerData(DataType.Money);
             _heath = CreatePlayerData(DataType.Health);
             _power = CreatePlayerData(DataType.Power);
-            _criminality = CreatePlayerData(DataType.Criminality, _crimeEdgeValue);
+            _criminality = CreatePlayerData(DataType.Criminality, _maxPeacefulCrimeValue);
 
             Subscribe();
         }

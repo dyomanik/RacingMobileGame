@@ -19,17 +19,17 @@ namespace BattleScripts
         private int _healthPlayer;
         private int _powerPlayer;
         private int _criminalityPlayer;
-        private int _crimeEdgeValue;
+        private int _maxPeacefulCrimeValue;
 
         public Enemy(string name)
         {
             _name = name;
         }
 
-        public Enemy(string name, int crimeEdgeValue)
+        public Enemy(string name, int maxPeacefulCrimeValue)
         {
             _name = name;
-            _crimeEdgeValue = crimeEdgeValue;
+            _maxPeacefulCrimeValue = maxPeacefulCrimeValue;
         }
 
         public void Update(PlayerData playerData)
@@ -75,7 +75,7 @@ namespace BattleScripts
 
         public bool CalcPeaceRelation()
         {
-            bool peaceRelation = _criminalityPlayer < _crimeEdgeValue; 
+            bool peaceRelation = _criminalityPlayer < _maxPeacefulCrimeValue; 
             return peaceRelation;
         }
     }
